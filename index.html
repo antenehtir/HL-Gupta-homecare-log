@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Care Service Log</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Home Care Service Log</h1>
+        <form id="care-form">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ampm">AM/PM:</label>
+                <select id="ampm" onchange="toggleFbsRbs()" required>
+                    <option value="">Select</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="doctor">Doctor:</label>
+                <select id="doctor" required>
+                    <option value="">Select Doctor</option>
+                    <option value="Dr. Anteneh">Dr. Anteneh</option>
+                    <option value="Dr. Lewam">Dr. Lewam</option>
+                    <option value="Dr. Helina">Dr. Helina</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bp">BP:</label>
+                <input type="text" id="bp" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pulse">Pulse Rate:</label>
+                <input type="number" id="pulse" required>
+            </div>
+
+            <div class="form-group">
+                <label for="spo2">Oxygen Saturation (SpO₂):</label>
+                <input type="number" id="spo2" min="0" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="temp">Temperature (°C):</label>
+                <input type="number" id="temp" step="0.1">
+            </div>
+
+            <div id="fbs-field" class="form-group hidden">
+                <label for="fbs">FBS (AM):</label>
+                <input type="number" id="fbs">
+            </div>
+
+            <div id="rbs-field" class="form-group hidden">
+                <label for="rbs">RBS (PM):</label>
+                <input type="number" id="rbs">
+            </div>
+
+            <div class="form-group">
+                <label for="status">Clinical Status:</label>
+                <textarea id="status" rows="3"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn submit-btn">Submit</button>
+                <button type="button" class="btn view-btn" onclick="displayRecords()">See Records</button>
+                <button type="button" class="btn reset-btn" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+
+        <div id="records" class="hidden">
+            <h2>Recorded Logs</h2>
+            <table id="record-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>AM/PM</th>
+                        <th>Doctor</th>
+                        <th>BP</th>
+                        <th>Pulse</th>
+                        <th>SpO₂</th>
+                        <th>Temp</th>
+                        <th>FBS</th>
+                        <th>RBS</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="record-list"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
